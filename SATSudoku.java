@@ -67,12 +67,11 @@ public class SATSudoku {
 			
 			
 		}
-		
 		return this.clauses;
 	}
         
         private void atMostBox(int row){
-            int col = row;
+            int col = 1;
             int save = col;
             if (row == 1 || row == 3){
                 for(int val = 1; val <= SIZE; val++){
