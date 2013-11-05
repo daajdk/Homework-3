@@ -60,12 +60,51 @@ public class SATSudoku {
 			//this builds the 'at most' for the columns clauses
                         System.out.println("@mostCols");
 				atMostForCols(i);
+                        // at most box
+                        // for 4x4, it prints boxes 1 and 2 at the same time
+                        System.out.println("atmostbox");
+                            atMostBox(i);
 			
 			
 		}
 		
 		return this.clauses;
 	}
+        
+        private void atMostBox(int row){
+            int col = row;
+            int save = col;
+            if (row == 1 || row == 3){
+                for(int val = 1; val <= SIZE; val++){
+                    col = save;
+                    System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+                    + Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " 0\n");
+                    System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+                    + Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " 0\n");
+                    System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+                    + Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " 0\n");
+                    System.out.print(Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " " 
+                    + Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " 0\n");
+                    System.out.print(Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " " 
+                    + Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " 0\n");
+                    System.out.print(Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " " 
+                    + Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " 0\n");
+                    col = 3;
+                    System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+                    + Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " 0\n");
+                    System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+                    + Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " 0\n");
+                    System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+                    + Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " 0\n");
+                    System.out.print(Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " " 
+                    + Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " 0\n");
+                    System.out.print(Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " " 
+                    + Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " 0\n");
+                    System.out.print(Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " " 
+                    + Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " 0\n");
+                }
+            }
+        }
 	private void colContainsOneThroughNine(int i){
                 for(int val=1; val <= SIZE; val++){
                     for(int j = 1; j <= SIZE; j++)
