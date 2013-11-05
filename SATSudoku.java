@@ -193,7 +193,7 @@ public class SATSudoku {
                         this.clauses += Integer.toString(j) + Integer.toString(i) + Integer.toString(val) + " ";
                         this.varNum++;
                     }
-                    System.out.print(" 0\n");
+                    this.clauses += " 0\n";
                     this.clauseNum++;                
                 }
 		/*String miniClause = new String();
