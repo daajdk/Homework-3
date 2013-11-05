@@ -51,6 +51,7 @@ public class SATSudoku {
 			//this builds the 'every row contains 1-9' clause
 				//rowContainsOneThroughNine(i);	//DOESN'T WORK
 			//this builds the 'at most' for the rows clauses
+			System.out.println("Here!");
 				atMostForRows(i);
 			//this builds the 'every column contains 1-9' clause
 				//colContainsOneThroughNine(i); //DOESNT WORK
@@ -121,27 +122,81 @@ public class SATSudoku {
 		int col2 = 2;
 		int val = 1;
 		int col = 1;
-		while (true){
-		//	this.clauses += Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-		//					+ Integer.toString(row) + Integer.toString(col2) + Integer.toString(val) + " 0\n";
-			System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-							+ Integer.toString(row) + Integer.toString(col2) + Integer.toString(val) + " 0\n");
-			this.clauseNum++;
-			this.varNum = this.varNum + 2;
-			if (col2 == SIZE && col == SIZE - 1){
-				val++;
-			}
-			if (col2 == SIZE){
-				col++;
-				col2 = col;
-			}
-			col2++;
+		/*while (true){
 			
 			if ((col == SIZE - 1) && (col2 == SIZE) && (val == SIZE)){
 				return;
+			}*/
+			for(val=1; val <= SIZE; val++){
+				System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+						+ Integer.toString(row) + Integer.toString(col2) + Integer.toString(val) + " 0\n");
+				System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+						+ Integer.toString(row) + Integer.toString(col2+1) + Integer.toString(val) + " 0\n");
+				System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+						+ Integer.toString(row) + Integer.toString(col2+2) + Integer.toString(val) + " 0\n");
+				System.out.print(Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " " 
+						+ Integer.toString(row) + Integer.toString(col2+1) + Integer.toString(val) + " 0\n");
+				System.out.print(Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " " 
+						+ Integer.toString(row) + Integer.toString(col2+2) + Integer.toString(val) + " 0\n");
+				System.out.print(Integer.toString(row) + Integer.toString(col+2) + Integer.toString(val) + " " 
+						+ Integer.toString(row) + Integer.toString(col2+2) + Integer.toString(val) + " 0\n");
 			}
+		//	this.clauses += "-" + Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+		//					+ "-" + Integer.toString(row) + Integer.toString(col2) + Integer.toString(val) + " 0\n";
+			/*System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+							+ Integer.toString(row) + Integer.toString(col2) + Integer.toString(val) + " 0\n");
+			this.clauseNum++;
+			this.varNum = this.varNum + 2;
+			if( col2 < SIZE && col < SIZE-1 ){
+			col2++;
+			}
+			if (col2 == SIZE && col < SIZE -1 && val < SIZE){
+				col += 1;
+				col2 = col +1;
+				val += 1;
+			}
+			if(col2 == SIZE && col == SIZE-1 && val < SIZE){
+				val += 1;
+				col += 1;
+				col2 = col + 1;
+			}
+			if(col2 == SIZE && col == SIZE-1 && val == SIZE){
+				return;
+			}
+			/*if (col >= SIZE -1 && col2 >= SIZE){
+				val++;
+				col = 1;
+				col2 = 2;
+			}
+	
+
 		}
 		
+		if (col >= SIZE-1 & col2 >= SIZE && val >= SIZE){
+			return;
+		}
+		System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " "
+				+ Integer.toString(row) + Integer.toString(col2) + Integer.toString(val) + " 0\n");
+		if (col2 == SIZE && col < SIZE -1 && col+1 == SIZE-1){
+			atMostForRows(row, val, col+1, col2);
+		}
+		if (col2 < SIZE && col < SIZE -1){
+			atMostForRows(row, val, col+1, col2-1);
+		}*/
+		
+//		for (int y = 1; y <= SIZE * SIZE; y++){
+//			System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+//								+ Integer.toString(row) + Integer.toString(col2) + Integer.toString(val) + " 0\n");
+//			if (col2 < SIZE){
+//				col2++;
+//			}
+//			if (col2 == SIZE && col < SIZE -1){
+//				col++;
+//			}
+//			
+//		}
+//		atMostForRows(row, val+1, col, col2);
+		//}
 	}
 	private void atMostForCells(String strI, String strJ, int min, int max){
 		//this builds the 'at most' clauses that ensures 1 number per cell
