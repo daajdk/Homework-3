@@ -49,14 +49,16 @@ public class SATSudoku {
 			}
 			
 			//this builds the 'every row contains 1-9' clause
-				//rowContainsOneThroughNine(i);	//DOESN'T WORK
+                        System.out.println("rowcontainsthru9");
+				rowContainsOneThroughNine(i);	//DOESN'T WORK
 			//this builds the 'at most' for the rows clauses
                         System.out.println("@mostRows");
                                 atMostForRows(i);
 			//this builds the 'every column contains 1-9' clause
-				//colContainsOneThroughNine(i); //DOESNT WORK
+                        System.out.println("colcontainsthru9");
+				colContainsOneThroughNine(i); //DOESNT WORK
 			//this builds the 'at most' for the columns clauses
-                                System.out.println("@mostCols");
+                        System.out.println("@mostCols");
 				atMostForCols(i);
 			
 			
@@ -65,7 +67,12 @@ public class SATSudoku {
 		return this.clauses;
 	}
 	private void colContainsOneThroughNine(int i){
-		String miniClause = new String();
+                for(int val=1; val <= SIZE; val++){
+                    for(int j = 1; j <= SIZE; j++)
+                        System.out.print(Integer.toString(j) + Integer.toString(i) + Integer.toString(val) + " ");
+                    System.out.print(" 0\n");
+                }
+		/*String miniClause = new String();
 		for (int k = 1; k <= SIZE; k++){
 			int y = 1;
 			int count = 0;
@@ -78,10 +85,15 @@ public class SATSudoku {
 			miniClause += " 0\n";
 			clauses += miniClause;
 			clauseNum++;
-		}
+		}*/
 	}
 	private void rowContainsOneThroughNine(int i){
-		String miniClause = new String();
+                for(int val=1; val <= SIZE; val++){
+                    for(int j = 1; j <= SIZE; j++)
+                        System.out.print(Integer.toString(i) + Integer.toString(j) + Integer.toString(val) + " ");
+                    System.out.print(" 0\n");
+                }
+		/*String miniClause = new String();
 		for (int k = 1; k <= SIZE; k++){
 			int y = 1;
 			int count = 0;
@@ -94,7 +106,7 @@ public class SATSudoku {
 			miniClause += " 0\n";
 			clauses += miniClause;
 			clauseNum++;
-		}
+		}*/
 	}
 	private void atMostForCols(int col){
 		int row2 = 2;
