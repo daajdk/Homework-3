@@ -109,31 +109,31 @@ public class SATSudoku {
             if (row == 1 || row == 3){
                 for(int val = 1; val <= SIZE; val++){
                     col = save;
-                    this.clauses += Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-                    + Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " 0\n";
-                    this.clauses += Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-                    + Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " 0\n";
-                    this.clauses += Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-                    + Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " 0\n";
-                    this.clauses += Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " " 
-                    + Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " 0\n";
-                    this.clauses += Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " " 
-                    + Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " 0\n";
-                    this.clauses += Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " " 
-                    + Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " 0\n";
+                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+                    + "-" + Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " 0\n";
+                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+                    + "-" + Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " 0\n";
+                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+                    + "-" + Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " 0\n";
+                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " " 
+                    + "-" + Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " 0\n";
+                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " " 
+                    + "-" + Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " 0\n";
+                    this.clauses += "-" + Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " " 
+                    + "-" + Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " 0\n";
                     col = 3;
-                    this.clauses += Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-                    + Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " 0\n";
-                    this.clauses += Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-                    + Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " 0\n";
-                    this.clauses += Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-                    + Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " 0\n";
-                    this.clauses += Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " " 
-                    + Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " 0\n";
-                    this.clauses += Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " " 
-                    + Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " 0\n";
-                    this.clauses += Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " " 
-                    + Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " 0\n";
+                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+                    + "-" + Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " 0\n";
+                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+                    + "-" + Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " 0\n";
+                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+                    + "-" + Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " 0\n";
+                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " " 
+                    + "-" + Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " 0\n";
+                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " " 
+                    + "-" + Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " 0\n";
+                    this.clauses += "-" + Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " " 
+                    + "-" + Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " 0\n";
                     this.clauseNum += 12;
                     this.varNum += 24;
                 }
@@ -260,18 +260,18 @@ public class SATSudoku {
 //				+ Integer.toString(row2+2) + Integer.toString(col) + Integer.toString(val) + " 0\n");
 //                }
                 for(val=1; val <= SIZE; val++){
-                    this.clauses += Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ Integer.toString(row2) + Integer.toString(col) + Integer.toString(val) + " 0\n";
-                    this.clauses += Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ Integer.toString(row2+1) + Integer.toString(col) + Integer.toString(val) + " 0\n";
-                    this.clauses += Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ Integer.toString(row2+2) + Integer.toString(col) + Integer.toString(val) + " 0\n";
-                    this.clauses += Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ Integer.toString(row2+1) + Integer.toString(col) + Integer.toString(val) + " 0\n";
-                    this.clauses += Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ Integer.toString(row2+2) + Integer.toString(col) + Integer.toString(val) + " 0\n";
-                    this.clauses += Integer.toString(row+2) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ Integer.toString(row2+2) + Integer.toString(col) + Integer.toString(val) + " 0\n";
+                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+				+ "-" + Integer.toString(row2) + Integer.toString(col) + Integer.toString(val) + " 0\n";
+                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+				+ "-" + Integer.toString(row2+1) + Integer.toString(col) + Integer.toString(val) + " 0\n";
+                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+				+ "-" + Integer.toString(row2+2) + Integer.toString(col) + Integer.toString(val) + " 0\n";
+                    this.clauses += "-" + Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " " 
+				+ "-" + Integer.toString(row2+1) + Integer.toString(col) + Integer.toString(val) + " 0\n";
+                    this.clauses += "-" + Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " " 
+				+ "-" + Integer.toString(row2+2) + Integer.toString(col) + Integer.toString(val) + " 0\n";
+                    this.clauses += "-" + Integer.toString(row+2) + Integer.toString(col) + Integer.toString(val) + " " 
+				+ "-" + Integer.toString(row2+2) + Integer.toString(col) + Integer.toString(val) + " 0\n";
                     this.clauseNum += 6;
                     this.varNum += 12;
                 }
@@ -317,18 +317,18 @@ public class SATSudoku {
 //						+ Integer.toString(row) + Integer.toString(col2+2) + Integer.toString(val) + " 0\n");
 //			}
                         for(val=1; val <= SIZE; val++){
-				this.clauses += Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-						+ Integer.toString(row) + Integer.toString(col2) + Integer.toString(val) + " 0\n";
-				this.clauses += Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-						+ Integer.toString(row) + Integer.toString(col2+1) + Integer.toString(val) + " 0\n";
-				this.clauses += Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-						+ Integer.toString(row) + Integer.toString(col2+2) + Integer.toString(val) + " 0\n";
-				this.clauses += Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " " 
-						+ Integer.toString(row) + Integer.toString(col2+1) + Integer.toString(val) + " 0\n";
-				this.clauses += Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " " 
-						+ Integer.toString(row) + Integer.toString(col2+2) + Integer.toString(val) + " 0\n";
-				this.clauses += Integer.toString(row) + Integer.toString(col+2) + Integer.toString(val) + " " 
-						+ Integer.toString(row) + Integer.toString(col2+2) + Integer.toString(val) + " 0\n";
+				this.clauses += "-" + Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+						+ "-" + Integer.toString(row) + Integer.toString(col2) + Integer.toString(val) + " 0\n";
+				this.clauses += "-" + Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+						+ "-" + Integer.toString(row) + Integer.toString(col2+1) + Integer.toString(val) + " 0\n";
+				this.clauses += "-" + Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+						+ "-" + Integer.toString(row) + Integer.toString(col2+2) + Integer.toString(val) + " 0\n";
+				this.clauses += "-" + Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " " 
+						+ "-" + Integer.toString(row) + Integer.toString(col2+1) + Integer.toString(val) + " 0\n";
+				this.clauses += "-" + Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " " 
+						+ "-" + Integer.toString(row) + Integer.toString(col2+2) + Integer.toString(val) + " 0\n";
+				this.clauses += "-" + Integer.toString(row) + Integer.toString(col+2) + Integer.toString(val) + " " 
+						+ "-" + Integer.toString(row) + Integer.toString(col2+2) + Integer.toString(val) + " 0\n";
                                 this.clauseNum += 6;
                                 this.varNum += 12;
 			}
