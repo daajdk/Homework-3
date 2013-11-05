@@ -51,12 +51,13 @@ public class SATSudoku {
 			//this builds the 'every row contains 1-9' clause
 				//rowContainsOneThroughNine(i);	//DOESN'T WORK
 			//this builds the 'at most' for the rows clauses
-			System.out.println("Here!");
-				atMostForRows(i);
+                        System.out.println("@mostRows");
+                                atMostForRows(i);
 			//this builds the 'every column contains 1-9' clause
 				//colContainsOneThroughNine(i); //DOESNT WORK
 			//this builds the 'at most' for the columns clauses
-				//atMostForCols(i);
+                                System.out.println("@mostCols");
+				atMostForCols(i);
 			
 			
 		}
@@ -100,7 +101,21 @@ public class SATSudoku {
 		int val = 1;
 		int row = 1;
 		boolean flag = true;
-		while (flag){
+                for(val=1; val <= SIZE; val++){
+                    System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+				+ Integer.toString(row2) + Integer.toString(col) + Integer.toString(val) + " 0\n");
+                    System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+				+ Integer.toString(row2+1) + Integer.toString(col) + Integer.toString(val) + " 0\n");
+                    System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+				+ Integer.toString(row2+2) + Integer.toString(col) + Integer.toString(val) + " 0\n");
+                    System.out.print(Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " " 
+				+ Integer.toString(row2+1) + Integer.toString(col) + Integer.toString(val) + " 0\n");
+                    System.out.print(Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " " 
+				+ Integer.toString(row2+2) + Integer.toString(col) + Integer.toString(val) + " 0\n");
+                    System.out.print(Integer.toString(row+2) + Integer.toString(col) + Integer.toString(val) + " " 
+				+ Integer.toString(row2+2) + Integer.toString(col) + Integer.toString(val) + " 0\n");
+                }
+		/*while (flag){
 			this.clauses += Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
 							+ Integer.toString(row2) + Integer.toString(col) + Integer.toString(val) + " 0\n";
 			this.clauseNum++;
@@ -116,7 +131,7 @@ public class SATSudoku {
 			if (row == SIZE - 1 && row2 == SIZE && val == SIZE){
 				flag = false;
 			}
-		}
+		}*/
 	}
 	private void atMostForRows(int row){
 		int col2 = 2;
