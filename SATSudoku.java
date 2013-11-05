@@ -64,6 +64,9 @@ public class SATSudoku {
                         // for 4x4, it prints boxes 1 and 2 at the same time
                         System.out.println("atmostbox");
                             atMostBox(i);
+                        // box contains 1-9
+                            System.out.println("boxContains");
+                            boxContainsOneThroughNine(i);
 			
 			
 		}
@@ -102,6 +105,29 @@ public class SATSudoku {
                     System.out.print(Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " " 
                     + Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " 0\n");
                 }
+            }
+        }
+        
+        private void boxContainsOneThroughNine(int row){
+            int col = 1;
+            int save = col;
+            if (row == 1 || row == 3){
+                for(int val = 1; val <= SIZE; val++){
+                    col = save;
+                    System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " ");
+                    System.out.print(Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " ");
+                    System.out.print(Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " ");
+                    System.out.print(Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " ");
+                    System.out.print("0\n");
+                    col = 3;
+                    System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " ");
+                    System.out.print(Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " ");
+                    System.out.print(Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " ");
+                    System.out.print(Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " ");
+                    System.out.print("0\n");
+                    
+                }
+                
             }
         }
 	private void colContainsOneThroughNine(int i){
