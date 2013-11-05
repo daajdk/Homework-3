@@ -12,8 +12,8 @@ public class SATSudoku {
 	final private static int EMPTY_SPACE = 0;
 	final private static int MIN = 1;
 	private String clauses = new String();
-	private int varNum = 0;
-	private int clauseNum = 0;
+	public int varNum = 0;
+	public int clauseNum = 0;
 	
 	
 	public String buildClauses(int[][] puzzle){
@@ -23,49 +23,49 @@ public class SATSudoku {
 			for (int j = 1; j <= SIZE; j++){
 				String strJ = Integer.toString(j);
 				
-//				//this builds a singleton clause because of a prefilled space
-//				if (!(puzzle[i][j] == EMPTY_SPACE)){
-//					clauses += strI + strJ + Integer.toString (puzzle[i][j]) + " 0\n";
-//					clauseNum++;
-//					varNum++;
-//				}
-//				
-//				//this builds the 'a space needs 1-9' miniclause that's to be added to the main clause list
-//				int x = 1;
-//				String miniClause = new String();
-//				while (x <= SIZE){
-//				       miniClause += strI + strJ + Integer.toString(x) + " ";
-//				       x++;
-//				       varNum++; 
-//				}
-//				
-//				miniClause += " 0\n";
-//				clauses += miniClause;
-//				clauseNum++;
+				//this builds a singleton clause because of a prefilled space
+				if (!(puzzle[i][j] == EMPTY_SPACE)){
+					clauses += strI + strJ + Integer.toString (puzzle[i][j]) + " 0\n";
+					clauseNum++;
+					varNum++;
+				}
+				
+				//this builds the 'a space needs 1-9' miniclause that's to be added to the main clause list
+				int x = 1;
+				String miniClause = new String();
+				while (x <= SIZE){
+				       miniClause += strI + strJ + Integer.toString(x) + " ";
+				       x++;
+				       varNum++; 
+				}
+				
+				miniClause += " 0\n";
+				clauses += miniClause;
+				clauseNum++;
 				
 				//at most clauses
-				//atMostForCells(strI, strJ, MIN, SIZE);
+				atMostForCells(strI, strJ, MIN, SIZE);
 				
 			}
 			
 			//this builds the 'every row contains 1-9' clause
-                        System.out.println("rowcontainsthru9");
+                        //System.out.println("rowcontainsthru9");
 				rowContainsOneThroughNine(i);	//DOESN'T WORK
 			//this builds the 'at most' for the rows clauses
-                        System.out.println("@mostRows");
+                        //System.out.println("@mostRows");
                                 atMostForRows(i);
 			//this builds the 'every column contains 1-9' clause
-                        System.out.println("colcontainsthru9");
+                        //System.out.println("colcontainsthru9");
 				colContainsOneThroughNine(i); //DOESNT WORK
 			//this builds the 'at most' for the columns clauses
-                        System.out.println("@mostCols");
+                        //System.out.println("@mostCols");
 				atMostForCols(i);
                         // at most box
                         // for 4x4, it prints boxes 1 and 2 at the same time
-                        System.out.println("atmostbox");
+                        //System.out.println("atmostbox");
                             atMostBox(i);
                         // box contains 1-9
-                            System.out.println("boxContains");
+                        //System.out.println("boxContains");
                             boxContainsOneThroughNine(i);
 			
 			
@@ -76,34 +76,66 @@ public class SATSudoku {
         private void atMostBox(int row){
             int col = 1;
             int save = col;
+//            if (row == 1 || row == 3){
+//                for(int val = 1; val <= SIZE; val++){
+//                    col = save;
+//                    System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+//                    + Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " 0\n");
+//                    System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+//                    + Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " 0\n");
+//                    System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+//                    + Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " 0\n");
+//                    System.out.print(Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " " 
+//                    + Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " 0\n");
+//                    System.out.print(Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " " 
+//                    + Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " 0\n");
+//                    System.out.print(Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " " 
+//                    + Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " 0\n");
+//                    col = 3;
+//                    System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+//                    + Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " 0\n");
+//                    System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+//                    + Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " 0\n");
+//                    System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+//                    + Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " 0\n");
+//                    System.out.print(Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " " 
+//                    + Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " 0\n");
+//                    System.out.print(Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " " 
+//                    + Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " 0\n");
+//                    System.out.print(Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " " 
+//                    + Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " 0\n");
+//                }
+//            }
             if (row == 1 || row == 3){
                 for(int val = 1; val <= SIZE; val++){
                     col = save;
-                    System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-                    + Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " 0\n");
-                    System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-                    + Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " 0\n");
-                    System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-                    + Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " 0\n");
-                    System.out.print(Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " " 
-                    + Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " 0\n");
-                    System.out.print(Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " " 
-                    + Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " 0\n");
-                    System.out.print(Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " " 
-                    + Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " 0\n");
+                    this.clauses += Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+                    + Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " 0\n";
+                    this.clauses += Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+                    + Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " 0\n";
+                    this.clauses += Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+                    + Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " 0\n";
+                    this.clauses += Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " " 
+                    + Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " 0\n";
+                    this.clauses += Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " " 
+                    + Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " 0\n";
+                    this.clauses += Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " " 
+                    + Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " 0\n";
                     col = 3;
-                    System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-                    + Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " 0\n");
-                    System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-                    + Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " 0\n");
-                    System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-                    + Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " 0\n");
-                    System.out.print(Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " " 
-                    + Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " 0\n");
-                    System.out.print(Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " " 
-                    + Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " 0\n");
-                    System.out.print(Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " " 
-                    + Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " 0\n");
+                    this.clauses += Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+                    + Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " 0\n";
+                    this.clauses += Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+                    + Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " 0\n";
+                    this.clauses += Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+                    + Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " 0\n";
+                    this.clauses += Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " " 
+                    + Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " 0\n";
+                    this.clauses += Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " " 
+                    + Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " 0\n";
+                    this.clauses += Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " " 
+                    + Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " 0\n";
+                    this.clauseNum += 12;
+                    this.varNum += 24;
                 }
             }
         }
@@ -111,30 +143,58 @@ public class SATSudoku {
         private void boxContainsOneThroughNine(int row){
             int col = 1;
             int save = col;
+//            if (row == 1 || row == 3){
+//                for(int val = 1; val <= SIZE; val++){
+//                    col = save;
+//                    System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " ");
+//                    System.out.print(Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " ");
+//                    System.out.print(Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " ");
+//                    System.out.print(Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " ");
+//                    System.out.print("0\n");
+//                    col = 3;
+//                    System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " ");
+//                    System.out.print(Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " ");
+//                    System.out.print(Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " ");
+//                    System.out.print(Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " ");
+//                    System.out.print("0\n");
+//                    
+//                }
+//                
+//            }
             if (row == 1 || row == 3){
                 for(int val = 1; val <= SIZE; val++){
                     col = save;
-                    System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " ");
-                    System.out.print(Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " ");
-                    System.out.print(Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " ");
-                    System.out.print(Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " ");
-                    System.out.print("0\n");
+                    this.clauses += Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " ";
+                    this.clauses += Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " ";
+                    this.clauses += Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " ";
+                    this.clauses += Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " ";
+                    this.clauses += "0\n";
                     col = 3;
-                    System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " ");
-                    System.out.print(Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " ");
-                    System.out.print(Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " ");
-                    System.out.print(Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " ");
-                    System.out.print("0\n");
+                    this.clauses += Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " ";
+                    this.clauses += Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " ";
+                    this.clauses += Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " ";
+                    this.clauses += Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " ";
+                    this.clauses += "0\n";
+                    this.clauseNum += 2;
+                    this.varNum += 8;
                     
                 }
                 
             }
         }
 	private void colContainsOneThroughNine(int i){
+//                for(int val=1; val <= SIZE; val++){
+//                    for(int j = 1; j <= SIZE; j++)
+//                        System.out.print(Integer.toString(j) + Integer.toString(i) + Integer.toString(val) + " ");
+//                    System.out.print(" 0\n");
+//                }
                 for(int val=1; val <= SIZE; val++){
-                    for(int j = 1; j <= SIZE; j++)
-                        System.out.print(Integer.toString(j) + Integer.toString(i) + Integer.toString(val) + " ");
+                    for(int j = 1; j <= SIZE; j++){
+                        this.clauses += Integer.toString(j) + Integer.toString(i) + Integer.toString(val) + " ";
+                        this.varNum++;
+                    }
                     System.out.print(" 0\n");
+                    this.clauseNum++;                
                 }
 		/*String miniClause = new String();
 		for (int k = 1; k <= SIZE; k++){
@@ -152,10 +212,18 @@ public class SATSudoku {
 		}*/
 	}
 	private void rowContainsOneThroughNine(int i){
+//                for(int val=1; val <= SIZE; val++){
+//                    for(int j = 1; j <= SIZE; j++)
+//                        System.out.print(Integer.toString(i) + Integer.toString(j) + Integer.toString(val) + " ");
+//                    System.out.print(" 0\n");
+//                }
                 for(int val=1; val <= SIZE; val++){
-                    for(int j = 1; j <= SIZE; j++)
-                        System.out.print(Integer.toString(i) + Integer.toString(j) + Integer.toString(val) + " ");
-                    System.out.print(" 0\n");
+                    for(int j = 1; j <= SIZE; j++){
+                        this.clauses += Integer.toString(i) + Integer.toString(j) + Integer.toString(val) + " ";
+                        this.varNum++;
+                    }
+                    this.clauses += " 0\n";
+                    this.clauseNum += 1;
                 }
 		/*String miniClause = new String();
 		for (int k = 1; k <= SIZE; k++){
@@ -174,22 +242,38 @@ public class SATSudoku {
 	}
 	private void atMostForCols(int col){
 		int row2 = 2;
-		int val = 1;
+		int val;
 		int row = 1;
 		boolean flag = true;
+//                for(val=1; val <= SIZE; val++){
+//                    System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+//				+ Integer.toString(row2) + Integer.toString(col) + Integer.toString(val) + " 0\n");
+//                    System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+//				+ Integer.toString(row2+1) + Integer.toString(col) + Integer.toString(val) + " 0\n");
+//                    System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+//				+ Integer.toString(row2+2) + Integer.toString(col) + Integer.toString(val) + " 0\n");
+//                    System.out.print(Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " " 
+//				+ Integer.toString(row2+1) + Integer.toString(col) + Integer.toString(val) + " 0\n");
+//                    System.out.print(Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " " 
+//				+ Integer.toString(row2+2) + Integer.toString(col) + Integer.toString(val) + " 0\n");
+//                    System.out.print(Integer.toString(row+2) + Integer.toString(col) + Integer.toString(val) + " " 
+//				+ Integer.toString(row2+2) + Integer.toString(col) + Integer.toString(val) + " 0\n");
+//                }
                 for(val=1; val <= SIZE; val++){
-                    System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ Integer.toString(row2) + Integer.toString(col) + Integer.toString(val) + " 0\n");
-                    System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ Integer.toString(row2+1) + Integer.toString(col) + Integer.toString(val) + " 0\n");
-                    System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ Integer.toString(row2+2) + Integer.toString(col) + Integer.toString(val) + " 0\n");
-                    System.out.print(Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ Integer.toString(row2+1) + Integer.toString(col) + Integer.toString(val) + " 0\n");
-                    System.out.print(Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ Integer.toString(row2+2) + Integer.toString(col) + Integer.toString(val) + " 0\n");
-                    System.out.print(Integer.toString(row+2) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ Integer.toString(row2+2) + Integer.toString(col) + Integer.toString(val) + " 0\n");
+                    this.clauses += Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+				+ Integer.toString(row2) + Integer.toString(col) + Integer.toString(val) + " 0\n";
+                    this.clauses += Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+				+ Integer.toString(row2+1) + Integer.toString(col) + Integer.toString(val) + " 0\n";
+                    this.clauses += Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+				+ Integer.toString(row2+2) + Integer.toString(col) + Integer.toString(val) + " 0\n";
+                    this.clauses += Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " " 
+				+ Integer.toString(row2+1) + Integer.toString(col) + Integer.toString(val) + " 0\n";
+                    this.clauses += Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " " 
+				+ Integer.toString(row2+2) + Integer.toString(col) + Integer.toString(val) + " 0\n";
+                    this.clauses += Integer.toString(row+2) + Integer.toString(col) + Integer.toString(val) + " " 
+				+ Integer.toString(row2+2) + Integer.toString(col) + Integer.toString(val) + " 0\n";
+                    this.clauseNum += 6;
+                    this.varNum += 12;
                 }
 		/*while (flag){
 			this.clauses += Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
@@ -218,20 +302,37 @@ public class SATSudoku {
 			if ((col == SIZE - 1) && (col2 == SIZE) && (val == SIZE)){
 				return;
 			}*/
-			for(val=1; val <= SIZE; val++){
-				System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-						+ Integer.toString(row) + Integer.toString(col2) + Integer.toString(val) + " 0\n");
-				System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-						+ Integer.toString(row) + Integer.toString(col2+1) + Integer.toString(val) + " 0\n");
-				System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-						+ Integer.toString(row) + Integer.toString(col2+2) + Integer.toString(val) + " 0\n");
-				System.out.print(Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " " 
-						+ Integer.toString(row) + Integer.toString(col2+1) + Integer.toString(val) + " 0\n");
-				System.out.print(Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " " 
-						+ Integer.toString(row) + Integer.toString(col2+2) + Integer.toString(val) + " 0\n");
-				System.out.print(Integer.toString(row) + Integer.toString(col+2) + Integer.toString(val) + " " 
-						+ Integer.toString(row) + Integer.toString(col2+2) + Integer.toString(val) + " 0\n");
+//			for(val=1; val <= SIZE; val++){
+//				System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+//						+ Integer.toString(row) + Integer.toString(col2) + Integer.toString(val) + " 0\n");
+//				System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+//						+ Integer.toString(row) + Integer.toString(col2+1) + Integer.toString(val) + " 0\n");
+//				System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+//						+ Integer.toString(row) + Integer.toString(col2+2) + Integer.toString(val) + " 0\n");
+//				System.out.print(Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " " 
+//						+ Integer.toString(row) + Integer.toString(col2+1) + Integer.toString(val) + " 0\n");
+//				System.out.print(Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " " 
+//						+ Integer.toString(row) + Integer.toString(col2+2) + Integer.toString(val) + " 0\n");
+//				System.out.print(Integer.toString(row) + Integer.toString(col+2) + Integer.toString(val) + " " 
+//						+ Integer.toString(row) + Integer.toString(col2+2) + Integer.toString(val) + " 0\n");
+//			}
+                        for(val=1; val <= SIZE; val++){
+				this.clauses += Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+						+ Integer.toString(row) + Integer.toString(col2) + Integer.toString(val) + " 0\n";
+				this.clauses += Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+						+ Integer.toString(row) + Integer.toString(col2+1) + Integer.toString(val) + " 0\n";
+				this.clauses += Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+						+ Integer.toString(row) + Integer.toString(col2+2) + Integer.toString(val) + " 0\n";
+				this.clauses += Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " " 
+						+ Integer.toString(row) + Integer.toString(col2+1) + Integer.toString(val) + " 0\n";
+				this.clauses += Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " " 
+						+ Integer.toString(row) + Integer.toString(col2+2) + Integer.toString(val) + " 0\n";
+				this.clauses += Integer.toString(row) + Integer.toString(col+2) + Integer.toString(val) + " " 
+						+ Integer.toString(row) + Integer.toString(col2+2) + Integer.toString(val) + " 0\n";
+                                this.clauseNum += 6;
+                                this.varNum += 12;
 			}
+                        
 		//	this.clauses += "-" + Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
 		//					+ "-" + Integer.toString(row) + Integer.toString(col2) + Integer.toString(val) + " 0\n";
 			/*System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
