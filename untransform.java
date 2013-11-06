@@ -32,7 +32,6 @@ public class untransform {
             line = br.readLine();
             Matcher matcher = pattern.matcher(line);
             while(matcher.find()){
-                System.out.println(matcher.group(1));
                 String s = matcher.group(1);
                 int row = s.charAt(1)-'0';
                 int col = s.charAt(2)-'0';
