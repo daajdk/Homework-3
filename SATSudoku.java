@@ -49,26 +49,17 @@ public class SATSudoku {
 			}
 			
 			//this builds the 'every row contains 1-9' clause
-                        //System.out.println("rowcontainsthru9");
-				rowContainsOneThroughNine(i);	//DOESN'T WORK
+            rowContainsOneThroughNine(i);	
 			//this builds the 'at most' for the rows clauses
-                        //System.out.println("@mostRows");
-                                atMostForRows(i);
+            atMostForRows(i);
 			//this builds the 'every column contains 1-9' clause
-                        //System.out.println("colcontainsthru9");
-				colContainsOneThroughNine(i); //DOESNT WORK
+            colContainsOneThroughNine(i); 
 			//this builds the 'at most' for the columns clauses
-                        //System.out.println("@mostCols");
-				atMostForCols(i);
-                        // at most box
-                        // for 4x4, it prints boxes 1 and 2 at the same time
-                        //System.out.println("atmostbox");
-                            atMostBox(i);
-                        // box contains 1-9
-                        //System.out.println("boxContains");
-                            boxContainsOneThroughNine(i);
-			
-			
+            atMostForCols(i);
+            // at most box
+            atMostBox(i);
+            // box contains 1-9
+            boxContainsOneThroughNine(i);
 		}
 		return this.clauses;
 	}
@@ -76,36 +67,7 @@ public class SATSudoku {
         private void atMostBox(int row){
             int col = 1;
             int save = col;
-//            if (row == 1 || row == 3){
-//                for(int val = 1; val <= SIZE; val++){
-//                    col = save;
-//                    System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-//                    + Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " 0\n");
-//                    System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-//                    + Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " 0\n");
-//                    System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-//                    + Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " 0\n");
-//                    System.out.print(Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " " 
-//                    + Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " 0\n");
-//                    System.out.print(Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " " 
-//                    + Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " 0\n");
-//                    System.out.print(Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " " 
-//                    + Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " 0\n");
-//                    col = 3;
-//                    System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-//                    + Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " 0\n");
-//                    System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-//                    + Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " 0\n");
-//                    System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-//                    + Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " 0\n");
-//                    System.out.print(Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " " 
-//                    + Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " 0\n");
-//                    System.out.print(Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " " 
-//                    + Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " 0\n");
-//                    System.out.print(Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " " 
-//                    + Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " 0\n");
-//                }
-//            }
+
             if (row == 1 || row == 4 || row == 7){
                 for(int val = 1; val <= SIZE; val++){
                     col = save;
@@ -336,24 +298,6 @@ public class SATSudoku {
         private void boxContainsOneThroughNine(int row){
             int col = 1;
             int save = col;
-//            if (row == 1 || row == 3){
-//                for(int val = 1; val <= SIZE; val++){
-//                    col = save;
-//                    System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " ");
-//                    System.out.print(Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " ");
-//                    System.out.print(Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " ");
-//                    System.out.print(Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " ");
-//                    System.out.print("0\n");
-//                    col = 3;
-//                    System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " ");
-//                    System.out.print(Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " ");
-//                    System.out.print(Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " ");
-//                    System.out.print(Integer.toString(row+1) + Integer.toString(col+1) + Integer.toString(val) + " ");
-//                    System.out.print("0\n");
-//                    
-//                }
-//                
-//            }
             if (row == 1 || row == 4 || row == 7){
                 for(int val = 1; val <= SIZE; val++){
                     col = save;
@@ -396,13 +340,9 @@ public class SATSudoku {
                 
             }
         }
+        
 	private void colContainsOneThroughNine(int i){
-//                for(int val=1; val <= SIZE; val++){
-//                    for(int j = 1; j <= SIZE; j++)
-//                        System.out.print(Integer.toString(j) + Integer.toString(i) + Integer.toString(val) + " ");
-//                    System.out.print(" 0\n");
-//                }
-                for(int val=1; val <= SIZE; val++){
+        for(int val=1; val <= SIZE; val++){
                     for(int j = 1; j <= SIZE; j++){
                         this.clauses += Integer.toString(j) + Integer.toString(i) + Integer.toString(val) + " ";
                         this.varNum++;
@@ -410,28 +350,10 @@ public class SATSudoku {
                     this.clauses += " 0\n";
                     this.clauseNum++;                
                 }
-		/*String miniClause = new String();
-		for (int k = 1; k <= SIZE; k++){
-			int y = 1;
-			int count = 0;
-			while (y <= SIZE) {
-				miniClause += Integer.toString(i + count) + Integer.toString(i) + Integer.toString(k) + " ";
-				varNum++;
-				y++;
-			}
-			count++;
-			miniClause += " 0\n";
-			clauses += miniClause;
-			clauseNum++;
-		}*/
 	}
+        
 	private void rowContainsOneThroughNine(int i){
-//                for(int val=1; val <= SIZE; val++){
-//                    for(int j = 1; j <= SIZE; j++)
-//                        System.out.print(Integer.toString(i) + Integer.toString(j) + Integer.toString(val) + " ");
-//                    System.out.print(" 0\n");
-//                }
-                for(int val=1; val <= SIZE; val++){
+        for(int val=1; val <= SIZE; val++){
                     for(int j = 1; j <= SIZE; j++){
                         this.clauses += Integer.toString(i) + Integer.toString(j) + Integer.toString(val) + " ";
                         this.varNum++;
@@ -439,41 +361,14 @@ public class SATSudoku {
                     this.clauses += " 0\n";
                     this.clauseNum += 1;
                 }
-		/*String miniClause = new String();
-		for (int k = 1; k <= SIZE; k++){
-			int y = 1;
-			int count = 0;
-			while (y <= SIZE) {
-				miniClause += Integer.toString(i) + Integer.toString(i + count) + Integer.toString(k) + " ";
-				varNum++;
-				y++;
-			}
-			count++;
-			miniClause += " 0\n";
-			clauses += miniClause;
-			clauseNum++;
-		}*/
 	}
+    
 	private void atMostForCols(int col){
 		int row2 = 2;
                 int val;
 		int row = 1;
 		boolean flag = true;
-//                for(val=1; val <= SIZE; val++){
-//                    System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-//				+ Integer.toString(row2) + Integer.toString(col) + Integer.toString(val) + " 0\n");
-//                    System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-//				+ Integer.toString(row2+1) + Integer.toString(col) + Integer.toString(val) + " 0\n");
-//                    System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-//				+ Integer.toString(row2+2) + Integer.toString(col) + Integer.toString(val) + " 0\n");
-//                    System.out.print(Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " " 
-//				+ Integer.toString(row2+1) + Integer.toString(col) + Integer.toString(val) + " 0\n");
-//                    System.out.print(Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " " 
-//				+ Integer.toString(row2+2) + Integer.toString(col) + Integer.toString(val) + " 0\n");
-//                    System.out.print(Integer.toString(row+2) + Integer.toString(col) + Integer.toString(val) + " " 
-//				+ Integer.toString(row2+2) + Integer.toString(col) + Integer.toString(val) + " 0\n");
-//                }
-                for(val=1; val <= SIZE; val++){
+        for(val=1; val <= SIZE; val++){
                     this.clauses += "-" + Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
 				+ "-" + Integer.toString(row2) + Integer.toString(col) + Integer.toString(val) + " 0\n";
                     this.clauses += "-" + Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
@@ -549,48 +444,13 @@ public class SATSudoku {
                     this.clauseNum += 36;
                     this.varNum += 72;
                 }
-		/*while (flag){
-			this.clauses += Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-							+ Integer.toString(row2) + Integer.toString(col) + Integer.toString(val) + " 0\n";
-			this.clauseNum++;
-			this.varNum = this.varNum + 2;
-			if (row2 == SIZE){
-				row++;
-				row2 = row;
-			}
-			row2++;
-			if (row2 == SIZE && row == SIZE - 1){
-				val++;
-			}
-			if (row == SIZE - 1 && row2 == SIZE && val == SIZE){
-				flag = false;
-			}
-		}*/
-	}
+		}
+        
 	private void atMostForRows(int row){
 		int col2 = 2;
 		int val = 1;
 		int col = 1;
-		/*while (true){
-			
-			if ((col == SIZE - 1) && (col2 == SIZE) && (val == SIZE)){
-				return;
-			}*/
-//			for(val=1; val <= SIZE; val++){
-//				System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-//						+ Integer.toString(row) + Integer.toString(col2) + Integer.toString(val) + " 0\n");
-//				System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-//						+ Integer.toString(row) + Integer.toString(col2+1) + Integer.toString(val) + " 0\n");
-//				System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-//						+ Integer.toString(row) + Integer.toString(col2+2) + Integer.toString(val) + " 0\n");
-//				System.out.print(Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " " 
-//						+ Integer.toString(row) + Integer.toString(col2+1) + Integer.toString(val) + " 0\n");
-//				System.out.print(Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " " 
-//						+ Integer.toString(row) + Integer.toString(col2+2) + Integer.toString(val) + " 0\n");
-//				System.out.print(Integer.toString(row) + Integer.toString(col+2) + Integer.toString(val) + " " 
-//						+ Integer.toString(row) + Integer.toString(col2+2) + Integer.toString(val) + " 0\n");
-//			}
-                        for(val=1; val <= SIZE; val++){
+		for(val=1; val <= SIZE; val++){
 				this.clauses += "-" + Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
 				+ "-" + Integer.toString(row) + Integer.toString(col2) + Integer.toString(val) + " 0\n";
                     this.clauses += "-" + Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
@@ -666,64 +526,8 @@ public class SATSudoku {
                                 this.clauseNum += 36;
                                 this.varNum += 72;
 			}
-                        
-		//	this.clauses += "-" + Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-		//					+ "-" + Integer.toString(row) + Integer.toString(col2) + Integer.toString(val) + " 0\n";
-			/*System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-							+ Integer.toString(row) + Integer.toString(col2) + Integer.toString(val) + " 0\n");
-			this.clauseNum++;
-			this.varNum = this.varNum + 2;
-			if( col2 < SIZE && col < SIZE-1 ){
-			col2++;
-			}
-			if (col2 == SIZE && col < SIZE -1 && val < SIZE){
-				col += 1;
-				col2 = col +1;
-				val += 1;
-			}
-			if(col2 == SIZE && col == SIZE-1 && val < SIZE){
-				val += 1;
-				col += 1;
-				col2 = col + 1;
-			}
-			if(col2 == SIZE && col == SIZE-1 && val == SIZE){
-				return;
-			}
-			/*if (col >= SIZE -1 && col2 >= SIZE){
-				val++;
-				col = 1;
-				col2 = 2;
-			}
-	
-
-		}
-		
-		if (col >= SIZE-1 & col2 >= SIZE && val >= SIZE){
-			return;
-		}
-		System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " "
-				+ Integer.toString(row) + Integer.toString(col2) + Integer.toString(val) + " 0\n");
-		if (col2 == SIZE && col < SIZE -1 && col+1 == SIZE-1){
-			atMostForRows(row, val, col+1, col2);
-		}
-		if (col2 < SIZE && col < SIZE -1){
-			atMostForRows(row, val, col+1, col2-1);
-		}*/
-		
-//		for (int y = 1; y <= SIZE * SIZE; y++){
-//			System.out.print(Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-//								+ Integer.toString(row) + Integer.toString(col2) + Integer.toString(val) + " 0\n");
-//			if (col2 < SIZE){
-//				col2++;
-//			}
-//			if (col2 == SIZE && col < SIZE -1){
-//				col++;
-//			}
-//			
-//		}
-//		atMostForRows(row, val+1, col, col2);
-		//}
 	}
+    
 	private void atMostForCells(String strI, String strJ, int min, int max){
 		//this builds the 'at most' clauses that ensures 1 number per cell
 		if (min == max){

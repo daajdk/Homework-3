@@ -2,8 +2,6 @@
  * Clss which scans a file containing one line of digits for an NxN
  * Sudoku Board.
  */
-package sudokudaa;
-
 import java.io.*;
 import java.util.*;
 
@@ -67,16 +65,6 @@ public class ScanBoard {
             System.err.println("IO error with reading " + file);
             System.exit(1);
         }
-
-        // test code to makes sure numbers are entered on board correctly
-        // for the SATSudoku class
-//        for (int i = 0; i < size; i++) {
-//            for (int j = 0; j < size; j++) {
-//                System.out.print(board[i][j]);
-//            }
-//            System.out.println();
-//        }
-        
         return board;
     }
 }
