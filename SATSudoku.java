@@ -65,17 +65,9 @@ public class SATSudoku {
 	}
         
         private void atMostBox(int row){
-//            int col1 = 1;
-//
             int col2 = 2;
-//            int row1 = row;
-//            int row2 = row;
-//            int saveCol1 = 1;
-//            int saveCol2 = 2;
-//            int saveRow1 = row;
-//            int saveRow2 = 2;
-                int col = 1;
-                int save = col;
+            int col = 1;
+            int save = col;
             if (row == 1 || row == 4 || row == 7){
                 for(int val = 1; val <= SIZE; val++){
                     col = save;
