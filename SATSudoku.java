@@ -372,14 +372,10 @@ public class SATSudoku {
 	}
     
 	private void atMostForCols(int col){
-                //int row = 1;
-                //int col1 = col;
-		int row2 = 2;
-                //int val;
-		//int row = 1;
-		boolean flag = true;
-        for(int val=1; val <= SIZE; val++){
-            for(int row=1; row<SIZE; row++){
+                int row2 = 2;
+                boolean flag = true;
+                for(int val=1; val <= SIZE; val++){
+                    for(int row=1; row<SIZE; row++){
                         while(row2<=SIZE){
                             this.clauses += "-" + Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
 				+ "-" + Integer.toString(row2) + Integer.toString(col) + Integer.toString(val) + " 0\n";
@@ -394,9 +390,7 @@ public class SATSudoku {
         
 	private void atMostForRows(int row){
 		int col2 = 2;
-//		int val = 1;
-//		int col = 1;
-		for(int val=1; val <= SIZE; val++){
+                for(int val=1; val <= SIZE; val++){
                     for(int col=1; col<SIZE; col++){
                         while(col2<=SIZE){
                             this.clauses += "-" + Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
