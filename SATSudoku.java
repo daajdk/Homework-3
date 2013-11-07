@@ -65,9 +65,17 @@ public class SATSudoku {
 	}
         
         private void atMostBox(int row){
-            int col = 1;
-            int save = col;
-
+//            int col1 = 1;
+//
+            int col2 = 2;
+//            int row1 = row;
+//            int row2 = row;
+//            int saveCol1 = 1;
+//            int saveCol2 = 2;
+//            int saveRow1 = row;
+//            int saveRow2 = 2;
+                int col = 1;
+                int save = col;
             if (row == 1 || row == 4 || row == 7){
                 for(int val = 1; val <= SIZE; val++){
                     col = save;
@@ -364,167 +372,41 @@ public class SATSudoku {
 	}
     
 	private void atMostForCols(int col){
+                //int row = 1;
+                //int col1 = col;
 		int row2 = 2;
-                int val;
-		int row = 1;
+                //int val;
+		//int row = 1;
 		boolean flag = true;
-        for(val=1; val <= SIZE; val++){
-                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+        for(int val=1; val <= SIZE; val++){
+            for(int row=1; row<SIZE; row++){
+                        while(row2<=SIZE){
+                            this.clauses += "-" + Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
 				+ "-" + Integer.toString(row2) + Integer.toString(col) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row2+1) + Integer.toString(col) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row2+2) + Integer.toString(col) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row2+3) + Integer.toString(col) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row2+4) + Integer.toString(col) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row2+5) + Integer.toString(col) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row2+6) + Integer.toString(col) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row2+7) + Integer.toString(col) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row2+1) + Integer.toString(col) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row2+2) + Integer.toString(col) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row2+3) + Integer.toString(col) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row2+4) + Integer.toString(col) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row2+5) + Integer.toString(col) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row2+6) + Integer.toString(col) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row+1) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row2+7) + Integer.toString(col) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row+2) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row2+2) + Integer.toString(col) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row+2) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row2+3) + Integer.toString(col) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row+2) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row2+4) + Integer.toString(col) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row+2) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row2+5) + Integer.toString(col) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row+2) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row2+6) + Integer.toString(col) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row+2) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row2+7) + Integer.toString(col) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row+3) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row2+3) + Integer.toString(col) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row+3) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row2+4) + Integer.toString(col) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row+3) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row2+5) + Integer.toString(col) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row+3) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row2+6) + Integer.toString(col) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row+3) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row2+7) + Integer.toString(col) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row+4) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row2+4) + Integer.toString(col) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row+4) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row2+5) + Integer.toString(col) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row+4) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row2+6) + Integer.toString(col) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row+4) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row2+7) + Integer.toString(col) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row+5) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row2+5) + Integer.toString(col) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row+5) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row2+6) + Integer.toString(col) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row+5) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row2+7) + Integer.toString(col) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row+6) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row2+6) + Integer.toString(col) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row+6) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row2+7) + Integer.toString(col) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row+7) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row2+7) + Integer.toString(col) + Integer.toString(val) + " 0\n";
-                    this.clauseNum += 36;
-                    this.varNum += 72;
+                            this.clauseNum++;
+                            this.varNum += 2;
+                            row2++;
+                        }
+                    }
+
                 }
 		}
         
 	private void atMostForRows(int row){
 		int col2 = 2;
-		int val = 1;
-		int col = 1;
-		for(val=1; val <= SIZE; val++){
-				this.clauses += "-" + Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
+//		int val = 1;
+//		int col = 1;
+		for(int val=1; val <= SIZE; val++){
+                    for(int col=1; col<SIZE; col++){
+                        while(col2<=SIZE){
+                            this.clauses += "-" + Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
 				+ "-" + Integer.toString(row) + Integer.toString(col2) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row) + Integer.toString(col2+1) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row) + Integer.toString(col2+2) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row) + Integer.toString(col2+3) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row) + Integer.toString(col2+4) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row) + Integer.toString(col2+5) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row) + Integer.toString(col2+6) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row) + Integer.toString(col2+7) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row) + Integer.toString(col2+1) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row) + Integer.toString(col2+2) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row) + Integer.toString(col2+3) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row) + Integer.toString(col2+4) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row) + Integer.toString(col2+5) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row) + Integer.toString(col2+6) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col+1) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row) + Integer.toString(col2+7) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col+2) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row) + Integer.toString(col2+2) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col+2) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row) + Integer.toString(col2+3) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col+2) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row) + Integer.toString(col2+4) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col+2) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row) + Integer.toString(col2+5) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col+2) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row) + Integer.toString(col2+6) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col+2) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row) + Integer.toString(col2+7) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col+3) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row) + Integer.toString(col2+3) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col+3) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row) + Integer.toString(col2+4) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col+3) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row) + Integer.toString(col2+5) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col+3) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row) + Integer.toString(col2+6) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col+3) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row) + Integer.toString(col2+7) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col+4) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row) + Integer.toString(col2+4) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col+4) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row) + Integer.toString(col2+5) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col+4) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row) + Integer.toString(col2+6) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col+4) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row) + Integer.toString(col2+7) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col+5) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row) + Integer.toString(col2+5) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col+5) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row) + Integer.toString(col2+6) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col+5) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row) + Integer.toString(col2+7) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col+6) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row) + Integer.toString(col2+6) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col+6) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row) + Integer.toString(col2+7) + Integer.toString(val) + " 0\n";
-                    this.clauses += "-" + Integer.toString(row) + Integer.toString(col+7) + Integer.toString(val) + " " 
-				+ "-" + Integer.toString(row) + Integer.toString(col2+7) + Integer.toString(val) + " 0\n";
-                                this.clauseNum += 36;
-                                this.varNum += 72;
+                            this.clauseNum++;
+                            this.varNum += 2;
+                            col2++;
+                        }
+                    }
+
 			}
 	}
     
@@ -536,7 +418,7 @@ public class SATSudoku {
 		if (strI != null && strJ != null){
 			for (int k = min; k < max; k++){
 				clauses += "-" + strI + strJ + Integer.toString(min) + " " + "-" + strI + strJ + Integer.toString(k + 1) + " 0\n";
-				this.varNum = this.varNum + 2;
+				this.varNum += 2;
 				this.clauseNum++;
 			}
 		}
